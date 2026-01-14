@@ -1,35 +1,19 @@
 {
-<<<<<<< HEAD
   "name": "Fashon_Shop",
   "version": "1.0.0",
-  "description": "A simple CAP project.",
+  "description": "A simple CAP Ecommerce Project.",
   "dependencies": {
     "@cap-js/hana": "^2",
-=======
-  "name": "capapp",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "dependencies": {
->>>>>>> 01a1d06416de247203c8b3c430cf11e498600aef
     "@sap/cds": "^9",
     "express": "^4"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@cap-js/sqlite": "^2",
     "@sap/cds-dk": "^9"
-=======
-    "@cap-js/sqlite": "^2"
->>>>>>> 01a1d06416de247203c8b3c430cf11e498600aef
   },
   "scripts": {
     "start": "cds-serve"
   },
-<<<<<<< HEAD
   "private": true,
   "cds": {}
 }
-=======
-  "private": true
-}
->>>>>>> 01a1d06416de247203c8b3c430cf11e498600aef
