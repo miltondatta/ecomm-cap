@@ -36,3 +36,6 @@ mta_archives/
 
 # @cap-js/cds-typer
 @cds-models
+
+# auto generated wildcard
+db/.env

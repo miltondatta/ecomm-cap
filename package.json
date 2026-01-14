@@ -4,7 +4,7 @@
   "description": "A simple CAP Ecommerce Project.",
   "dependencies": {
     "@cap-js/hana": "^2",
-    "@sap/cds": "^9",
+    "@sap/cds": "^9.6.2",
     "express": "^4"
   },
   "scripts": {

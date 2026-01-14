@@ -1,6 +1,6 @@
 namespace sap.ui.riskmanagement;
 
-using {managed} from '@sap\cds\common';
+using {managed} from '@sap/cds/common';
 
 entity Risks : managed {
 

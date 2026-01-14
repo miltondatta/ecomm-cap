@@ -1,5 +1,5 @@
 namespace app.fashionShop;
-using { Currency } from '@sap\cds\common';
+using { Currency } from '@sap/cds/common';
 
 type Flag : String(1);
 
