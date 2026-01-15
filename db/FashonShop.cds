@@ -17,18 +17,7 @@ entity Fashion_Types {
         description: String(64);
 }
 
-// entity Fashion_Items {
-//     key id: UUID;
-//         fashionType: Association to Fashion_Types;
-//         itemname: String(16);
-//         brand: String(16);
-//         size: String(8);
-//         material: String(100);
-//         currency: Currency;
-//         isavailable: Flag;
-// }
-
-entity Fashion_Items1 {
+entity Fashion_Items {
     key id: UUID;
         fashionType: Association to Fashion_Types;
         itemname: String(16);
@@ -40,8 +29,7 @@ entity Fashion_Items1 {
         isavailable: Flag;
 }
 
-
-view YC_Fashion_Shop as select from Fashion_Items1 as fItem{
+view ZC_Faschion as select from Fashion_Items as fItem {
     fItem.fashionType.section.id as sectionId,
     fItem.fashionType.section.name as sectionName,
     fItem.fashionType.section.description as sectionDesc,
@@ -50,16 +38,15 @@ view YC_Fashion_Shop as select from Fashion_Items1 as fItem{
     fItem.fashionType.description as fashionTypeDesc,
     fItem.id as fashionItemId,
     fItem.itemname as fashionItemName,
-    fItem.brand as brand,
-    fItem.size as size,
-    fItem.material as material,
-    fItem.price as price,
-    fItem.currency as currency,
-    //fItem.isavailable as isavailable,
-    concat( fItem.brand, concat( ' ', fItem.itemname) ) as itemDetails: String(64),
+    fItem.brand as fashionItemBrand,
+    fItem.material as fashionItemMat,
+    fItem.price as itemPrice,
+    fItem.currency as itemCurrency,
+    fItem.isavailable as iTemAvailable,
+    concat( fItem.brand, concat( ' ', fItem.itemname ) ) as iTemDetails : String(100),
     case
         when fItem.price >= 500 then 'Premium'
-        when fItem.price >= 100 and fItem.price <=500 then 'Mid Range'
+        when fItem.price >= 100 and fItem.price <= 500 then 'Mid Range'
         else 'Low Range'
-    end as priceRange : String(10)
-} where fItem.isavailable = 'x';
+    end as iTemRange : String(32)
+} where fItem.isavailable = 'X' ;
