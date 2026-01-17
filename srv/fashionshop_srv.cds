@@ -18,5 +18,70 @@ annotate fashionShop.Fashion_Items with @(UI: {
         Title : { Value: itemname},
         Description : { Value : 'Online Fashion Shop'}
     },
+
+    SelectionFields  : [
+        fashionType_id,
+        itemname,
+        brand,
+        size,
+        price
+    ],
+
+    LineItem  : [
+        
+        { Value : fashionType.section.name },
+        { Value : fashionType.typename },
+        { Value : itemname },
+        { Value : brand },
+        { Value : size },
+        { Value : price },
+        { Value : currency_code },
+        { Value : isavailable }
+
+    ],
+
+    Facets    : [{
+        $Type : 'UI.CollectionFacet',
+        ID : '1',
+        Label : 'Fashion Type & Section',
+        Facets: [{
+            $Type : 'UI.ReferenceFacet',
+            Target: '@UI.FieldGroup#Section'
+        }]
+    },
+    {
+        $Type : 'UI.CollectionFacet',
+        ID : '2',
+        Label : 'Fashion Details',
+        Facets: [{
+            $Type : 'UI.ReferenceFacet',
+            Target: '@UI.FieldGroup#ItemDetails'
+        }]
+    }
+    ],
+
+    FieldGroup #Section : {Data: [
+        {Value : fashionType.id},
+        {Value : fashionType.typename},
+        {Value : fashionType.description},
+        {Value : fashionType.section.id},
+        {Value : fashionType.section.name}
+    ],
+        $Type : 'UI.FieldGroupType'
+        
+    },
+
+    FieldGroup #ItemDetails : {Data : [
+        { Value : id },
+        { Value : itemname },
+        { Value : brand },
+        { Value : material },
+        { Value : size },
+        { Value : price },
+
+    ],
+        $Type : 'UI.FieldGroupType',
+        
+    },
     
 });

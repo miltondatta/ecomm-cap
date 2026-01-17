@@ -5,28 +5,28 @@ type Flag : String(1);
 
 
 entity Sections {
-    key id: UUID;
-        name: String(16);
-        description: String(64);
+    key id: UUID @(title : 'Section ID');
+        name: String(16) @(title : 'Section Name');
+        description: String(64) @(title : 'Section Description');
 }
 
 entity Fashion_Types {
-    key id: UUID;
-        section: Association to Sections;
-        typename: String(16);
-        description: String(64);
+    key id: UUID @(title : 'Fashion Type ID');
+        section: Association to Sections @(title : 'Section ID');
+        typename: String(16) @(title : 'Fashion Type');
+        description: String(64) @(title : 'Fashion Type Description');
 }
 
 entity Fashion_Items {
-    key id: UUID;
-        fashionType: Association to Fashion_Types;
-        itemname: String(16);
-        brand: String(16);
-        size: String(8);
-        material: String(100);
-        price: Double;
-        currency: Currency;
-        isavailable: Flag;
+    key id: UUID @(title : 'Fashion Item ID');
+        fashionType: Association to Fashion_Types @(title : 'Fashion Type ID');
+        itemname: String(16) @(title : 'Item Name');
+        brand: String(16) @(title : 'Item Brand');
+        size: String(8) @(title : 'Size');
+        material: String(100) @(title : 'Item Material');
+        price: Double @(title : 'Item Price');
+        currency: Currency @(title : 'Currency');
+        isavailable: Flag @(title : 'Is Available');
 }
 
 view ZC_Faschion as select from Fashion_Items as fItem {
