@@ -10,6 +10,7 @@ entity Srv_FashionShop as projection on fashionShop.ZC_Faschion;
     
 }
 
+@odata.draft.enabled
 annotate fashionShop.Fashion_Items with @(UI: {
     HeaderInfo  : {
         $Type : 'UI.HeaderInfoType',
