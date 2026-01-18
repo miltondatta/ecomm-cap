@@ -50,3 +50,10 @@ view ZC_Faschion as select from Fashion_Items as fItem {
         else 'Low Range'
     end as iTemRange : String(32)
 } where fItem.isavailable = 'X' ;
+
+view YC_Fashion_Type as select from fashionShop.Fashion_Types as fTypes
+{
+    fTypes.id as fashionTypeId,
+    fTypes.typename as fashionTypeName,
+    fTypes.section.name as section_name
+}

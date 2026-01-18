@@ -3,15 +3,19 @@ using app.fashionShop from '../db/FashonShop';
 service FashionShop_Service {
 
 entity Sections as projection on fashionShop.Sections;
+@cds.redirection.target : true
 entity Fashion_Types as projection on fashionShop.Fashion_Types;
 //entity Fashion_Items as projection on fashionShop.Fashion_Items;
 entity Fashion_Items as projection on fashionShop.Fashion_Items;
 entity Srv_FashionShop as projection on fashionShop.ZC_Faschion;
-    
+entity F4_FasionType as projection on fashionShop.YC_Fashion_Type;    
 }
 
 @odata.draft.enabled
 annotate fashionShop.Fashion_Items with @(UI: {
+    CreateHidden : false,
+    UpdateHidden : false,
+    DeleteHidden : false,
     HeaderInfo  : {
         $Type : 'UI.HeaderInfoType',
         TypeName : 'Online Fashion Shop',
@@ -63,10 +67,10 @@ annotate fashionShop.Fashion_Items with @(UI: {
 
     FieldGroup #Section : {Data: [
         {Value : fashionType.id},
-        {Value : fashionType.typename},
-        {Value : fashionType.description},
-        {Value : fashionType.section.id},
-        {Value : fashionType.section.name}
+        {Value : fashionType.typename, ![@Common.FieldControl] : #ReadOnly},
+        {Value : fashionType.description,![@Common.FieldControl] : #ReadOnly},
+        {Value : fashionType.section.id,![@Common.FieldControl] : #ReadOnly},
+        {Value : fashionType.section.name,![@Common.FieldControl] : #ReadOnly}
     ],
         $Type : 'UI.FieldGroupType'
         
@@ -86,3 +90,37 @@ annotate fashionShop.Fashion_Items with @(UI: {
     },
     
 });
+
+annotate FashionShop_Service.Fashion_Items with {
+
+    fashionType @(
+        title : 'Fashion Types',
+        sap.value.list : 'Fixed Type',
+        Common : {
+            ValueListWithFixedValues,
+            ValueList : {
+                CollectionPath : 'F4_FasionType',
+                Parameters : [
+                    {
+                        $Type : 'Common.ValueListParameterInOut',
+                        ValueListProperty: 'fashionTypeId',
+                        LocalDataProperty : fashionType_id
+                    },
+                    {
+                        $Type : 'Common.ValueListParameterDisplayOnly',
+                        ValueListProperty: 'section_name',
+                        
+                    },
+                    {
+                        $Type : 'Common.ValueListParameterInOut',
+                        ValueListProperty: 'fashionTypeName'
+                        
+                    }
+
+                ]
+                
+            },
+        }
+    )
+
+};
