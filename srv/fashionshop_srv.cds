@@ -8,7 +8,7 @@ entity Fashion_Types as projection on fashionShop.Fashion_Types;
 //entity Fashion_Items as projection on fashionShop.Fashion_Items;
 entity Fashion_Items as projection on fashionShop.Fashion_Items;
 entity Srv_FashionShop as projection on fashionShop.ZC_Faschion;
-entity F4_FasionType as projection on fashionShop.YC_Fashion_Type;    
+entity F4_FashionType as projection on fashionShop.YC_Fashion_Type;    
 }
 
 @odata.draft.enabled
@@ -99,7 +99,7 @@ annotate FashionShop_Service.Fashion_Items with {
         Common : {
             ValueListWithFixedValues,
             ValueList : {
-                CollectionPath : 'F4_FasionType',
+                CollectionPath : 'F4_FashionType',
                 Parameters : [
                     {
                         $Type : 'Common.ValueListParameterInOut',
